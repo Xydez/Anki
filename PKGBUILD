@@ -10,8 +10,8 @@
 # anki -> git rev-parse --short=8 $pkgver
 # ftl -> git submodule
 declare -gA _tags=(
- [ftl_core]="e1545f7f0ddeb617eeb1ca86e82862e552843578"
- [ftl_desktop]="e0f9724f75f6248f4e74558b25c3182d4f348bce"
+ [ftl_core]="77844bd7d2642fde8c1b7dd3b3d94f66896abace"
+ [ftl_desktop]="d2df38b80f6ac155dad7d94e351b0080c8d3c41b"
  [anki]="8e5efc59"
 )
 declare -gA _caches=(
@@ -79,8 +79,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs
         "strip-ankihub.patch"
 )
 sha256sums=(4c9b5d272240b76fa052760071c89d0eca5202dfd678a9464505ab99b121c868
-            65ea76e3e876dcf1feb9882f36ff0a1d86b9a1369fef5915eb17a5f26fd7c6fe
-            a0893a459a4c5fc3a8235d9b19d5f6ce868070aa12b604e2cc523e3db4224c09
+            e9afbead4769ac21a8c9c139f842bcc64ae9bb2294b4c75297aefbc6416ecdb0
+            2acbe1a5f6c0317113601f5fbb59e787167c9d90a400c5d6f1fe7559d6801cfc
             cc546f4e5af642af89f82be0375800c2721dd904c0a212cf46f6459495b75bff
             9858fefa254812980d252b29fc6f32bd19bb83ee7e5a96d72c707626ed5193a7
             198bc2ec14439e3ba41a03c4823f07df4b0c559c1dcbdaf678416ed12a720c2e
