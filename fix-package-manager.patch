@@ -1,0 +1,10 @@
+--- a/package.json	2025-02-17 12:10:37.442707265 +0100
++++ b/package.json	2025-02-17 12:11:02.618913502 +0100
+@@ -89,6 +89,5 @@
+         "Chrome 77",
+         "iOS 14.5"
+     ],
+-    "type": "module",
+-    "packageManager": "yarn@4.6.0"
++    "type": "module"
+ }

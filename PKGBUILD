@@ -10,9 +10,9 @@
 # anki -> git rev-parse --short=8 $pkgver
 # ftl -> git submodule
 declare -gA _tags=(
- [ftl_core]="77844bd7d2642fde8c1b7dd3b3d94f66896abace"
- [ftl_desktop]="d2df38b80f6ac155dad7d94e351b0080c8d3c41b"
- [anki]="8e5efc59"
+ [ftl_core]="0fe0162f4a18e8ef2fbac1d9a33af8e38cf7260e"
+ [ftl_desktop]="17216b03db7249600542e388bd4ea124478400e5"
+ [anki]="0d6788d5"
 )
 declare -gA _caches=(
     [yarn]="yarn-cache"
@@ -20,8 +20,8 @@ declare -gA _caches=(
 )
 
 pkgname=anki
-pkgver=24.11
-pkgrel=2
+pkgver=25.02
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -77,15 +77,17 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs
         "strip-type-checking-deps.patch"
         "strip-python-pip-system-certs.patch"
         "strip-ankihub.patch"
+		"fix-package-manager.patch"
 )
-sha256sums=(4c9b5d272240b76fa052760071c89d0eca5202dfd678a9464505ab99b121c868
-            e9afbead4769ac21a8c9c139f842bcc64ae9bb2294b4c75297aefbc6416ecdb0
-            2acbe1a5f6c0317113601f5fbb59e787167c9d90a400c5d6f1fe7559d6801cfc
+sha256sums=(dc6dfc859c871d360e17aa955478a9547ef90ce77192f9b48f6408936f361191
+            da57df3665ee094aa7d3566cd45a126f95b6cffef662a4c6f1959ea9e5b3f135
+            041684b0e23d041d4f7a0c21785371e3344c6b67824b1683318e3e70f08523bc
             cc546f4e5af642af89f82be0375800c2721dd904c0a212cf46f6459495b75bff
             9858fefa254812980d252b29fc6f32bd19bb83ee7e5a96d72c707626ed5193a7
             198bc2ec14439e3ba41a03c4823f07df4b0c559c1dcbdaf678416ed12a720c2e
             2506cf9d5b0c47a2c519ec4bb0ef87e7921dca8db5cae39b0dae265d01e253b3
             dc1b68cfbd57574b868b9214397d8db602b2456b4338df2db84de26d8644bfa8
+            19990f0f8df662ba5da0d16e3d04275b57c1eaa239a108d591603c1244960537
 )
 
 prepare() {
@@ -96,6 +98,7 @@ prepare() {
     patch -p1 < "$srcdir/strip-type-checking-deps.patch"
     patch -p1 < "$srcdir/strip-python-pip-system-certs.patch"
     patch -p1 < "$srcdir/strip-ankihub.patch"
+	patch -p1 < "$srcdir/fix-package-manager.patch"
     sed -i 's/opt-level = 1$/opt-level= 3/' Cargo.toml	# optimize more
     sed -i 's/channel = "[0-9\.]*"$/channel = "stable"/' rust-toolchain.toml # use most recent stable rust toolchain
     # Build process wants .git/HEAD to be present. Workaround to be able to use tarballs
